@@ -1,21 +1,16 @@
-// Data to be populated
-const data = [
-    {name: "sravani", email: "sravanimamidgi@gmail.com"},
-    {name: "sanjana", email: "sanjanamamidgi@gmail.com"},
-    {name: "sathwik", email: "sathwikmamidgi@gmail.com"}
+const users = [
+    { name: "Sravani", email: "sravanimamidgi@gmail.com" },
+    { name: "Sanjana", email: "sanjanamamidgi@gmail.com" },
+    { name: "Sathwik", email: "sathwikmamidgi@gmail.com" }
 ];
 
-// Function to populate the table
-function populateTable() {
-    const table = document.getElementById("dataTable");
-    data.forEach(item => {
+const populateTable = () => {
+    const table = document.querySelector("#dataTable tbody");
+    users.forEach(({ name, email }) => {
         const row = table.insertRow();
-        const cell1 = row.insertCell(0);
-        const cell2 = row.insertCell(1);
-        cell1.textContent = item.name;
-        cell2.textContent = item.email;
+        const [cell1, cell2] = [row.insertCell(0), row.insertCell(1)];
+        [cell1.textContent, cell2.textContent] = [name, email];
     });
 }
 
-// Populate the table on page load
 window.onload = populateTable;
